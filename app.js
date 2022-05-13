@@ -7,7 +7,14 @@ const http = require('http');
  * * @param {http.ServerResponse} response
  */
 const requestListener = (request, response) => {
-    // console.log(request);
+    const url = request.url;
+    if (url === '/') {
+        response.write('<html>');
+        response.write('<head><title>First Page</title></head>');
+        response.write('<body><form action="/message" method="POST"><input type="text" name="message"></input><button type="submit">Send</button></form></body>');
+        response.write('</html>');
+        return response.end();
+    }
     response.setHeader('Content-Type', 'text/html');
     response.write('<html>');
     response.write('<head><title>First Page</title></head>');
