@@ -21,3 +21,6 @@ const copiedArray = [...hobbies];
 // Destructuring object use {}, and array use []
 const {name, age} = person;
 const [h1, h2] = hobbies;
+
+// Async code, can use setTimeout, or use async and await just like flutter
+// to write string with variable can use backticks [`]
