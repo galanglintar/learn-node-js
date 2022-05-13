@@ -1,0 +1,23 @@
+{
+  "name": "first-app",
+  "version": "1.0.0",
+  "description": "Learn Node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/galanglintar/learn-node-js.git"
+  },
+  "author": "Galang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/galanglintar/learn-node-js/issues"
+  },
+  "homepage": "https://github.com/galanglintar/learn-node-js#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
