@@ -23,14 +23,15 @@ const requestListener = (request, response) => {
             console.log(chunk);
             body.push(chunk);
         });
-        request.on('end', () => {
+        return request.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
             const message = parsedBody.split('=')[1];
-            fs.writeFileSync('message.txt', message);
+            fs.writeFile('message.txt', message, callback => {
+                response.statusCode = 302;
+                response.setHeader('Location', '/');
+                return response.end();
+            });
         });
-        response.statusCode = 302;
-        response.setHeader('Location', '/');
-        return response.end();
     }
     response.setHeader('Content-Type', 'text/html');
     response.write('<html>');
