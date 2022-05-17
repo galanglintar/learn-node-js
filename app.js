@@ -5,6 +5,30 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+// pug templating engines
+/*
+app.set("view engine", "pug");
+app.set("views", "views/pug");
+*/
+
+// handlebars templating engines (old ways)
+/*
+const expressHbs = require("express-handlebars");
+app.engine(
+  "hbs",
+  expressHbs({
+    layoutDir: "views/hbs/layouts/",
+    defaultLayout: "main-layout.hbs",
+  })
+);
+app.set("view engine", "hbs");
+app.set("views", "views/hbs");
+*/
+
+// ejs templating engines
+app.set("view engine", "ejs");
+app.set("views", "views/ejs");
+
 // Routes module
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
@@ -16,11 +40,11 @@ const shopRoutes = require("./routes/shop");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/admin", adminRoutes);
+app.use("/admin", adminRoutes.router);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+  res.status(404).render("404", { pageTitle: "Page Not Found" });
 });
 
 // Create server in port 3000 using express as a handler
