@@ -28,3 +28,14 @@
 - create util function
 - styling the html using css
 - use public folder to store public files (everyone can access)
+
+17 May 2022
+
+- dynamic content
+- sharing data
+- templating engines (ejs, pug handlebars)
+- MVC structure
+- write controllers
+- write models
+- store and read file using file system as a json
+- create helper function
