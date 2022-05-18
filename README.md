@@ -39,3 +39,7 @@
 - write models
 - store and read file using file system as a json
 - create helper function
+
+18 May 2022
+
+- enhance shop app
