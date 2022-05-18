@@ -34,3 +34,8 @@
 - dynamic content
 - sharing data
 - templating engines (ejs, pug handlebars)
+- MVC structure
+- write controllers
+- write models
+- store and read file using file system as a json
+- create helper function
