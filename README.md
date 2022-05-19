@@ -48,3 +48,9 @@
 - passing data using POST
 - get query parameters
 - manipulate json data (find, add, edit and delete)
+
+19 May 2022
+
+- setup MySQL database
+- connecting the app to the MySQL database
+- do simple query (insert and getting data)
