@@ -39,3 +39,22 @@
 - write models
 - store and read file using file system as a json
 - create helper function
+
+18 May 2022
+
+- enhance shop app
+- adding parameter to the route
+- find data in array by using id
+- passing data using POST
+- get query parameters
+- manipulate json data (find, add, edit and delete)
+
+19 May 2022
+
+- setup MySQL database
+- connecting the app to the MySQL database
+- do simple query (insert and getting data)
+- learn sequelize
+- associations in sequelize
+- use special method (create, get and set)
+- use then to handle async code
