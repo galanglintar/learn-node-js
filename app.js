@@ -2,6 +2,7 @@ const path = require("path");
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const errorController = require("./controllers/errors");
 // sequelizes
@@ -15,7 +16,10 @@ const CartItem = require("./models/sequelize/cart-item");
 const Order = require("./models/order");
 const OrderItem = require("./models/order-item");
 */
-const mongoConnect = require("./util/database").mongoConnect;
+
+// MongoDB
+// const mongoConnect = require("./util/database");
+
 const User = require("./models/user");
 
 const app = express();
@@ -67,11 +71,22 @@ app.use((req, res, next) => {
 });
 */
 
+/*
 app.use((req, res, next) => {
   User.findById("628ae7a5419d06f23392185e")
     .then((user) => {
       console.log(user);
       req.user = new User(user.name, user.email, user.cart, user._id);
+      next();
+    })
+    .catch((err) => console.log(err));
+});
+*/
+
+app.use((req, res, next) => {
+  User.findById("628b043a66380d08755312c3")
+    .then((user) => {
+      req.user = user;
       next();
     })
     .catch((err) => console.log(err));
@@ -118,6 +133,32 @@ sequelize
   });
 */
 
+// MongoDB
+/*
 mongoConnect(() => {
   app.listen(3000);
 });
+*/
+
+mongoose
+  .connect(
+    "mongodb+srv://galang:galang-cluster-0@clusternode0.gqomc.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then((result) => {
+    User.findOne().then((user) => {
+      if (!user) {
+        const user = new User({
+          name: "Galang",
+          email: "galang@test.com",
+          cart: {
+            items: [],
+          },
+        });
+        user.save();
+      }
+    });
+    app.listen(3000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
