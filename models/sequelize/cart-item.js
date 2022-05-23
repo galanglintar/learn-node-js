@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-const sequelize = require("../util/database");
+const sequelize = require("../../util/database");
 
 // create cart item model using sequelize format
 const CartItem = sequelize.define("cartItem", {

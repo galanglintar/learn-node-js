@@ -4,13 +4,19 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const errorController = require("./controllers/errors");
-const sequelize = require("./util/database");
+// sequelizes
+/*
+const User = require('./models/user');
+const sequelize = requi`re("./util/database");
 const Product = require("./models/product");
 const User = require("./models/user");
 const Cart = require("./models/cart");
-const CartItem = require("./models/cart-item");
+const CartItem = require("./models/sequelize/cart-item");
 const Order = require("./models/order");
 const OrderItem = require("./models/order-item");
+*/
+const mongoConnect = require("./util/database").mongoConnect;
+const User = require("./models/user");
 
 const app = express();
 
@@ -49,6 +55,8 @@ const shopRoutes = require("./routes/shop");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+// sequelizes
+/*
 app.use((req, res, next) => {
   User.findByPk(1)
     .then((user) => {
@@ -57,12 +65,25 @@ app.use((req, res, next) => {
     })
     .catch((err) => console.log("getUserError:", err));
 });
+*/
+
+app.use((req, res, next) => {
+  User.findById("628ae7a5419d06f23392185e")
+    .then((user) => {
+      console.log(user);
+      req.user = new User(user.name, user.email, user.cart, user._id);
+      next();
+    })
+    .catch((err) => console.log(err));
+});
 
 app.use("/admin", adminRoutes.router);
 app.use(shopRoutes);
 
 app.use(errorController.get404);
 
+// sequelizes
+/*
 Product.belongsTo(User, { constraints: true, onDelete: "CASCADE" });
 User.hasMany(Product);
 User.hasOne(Cart);
@@ -95,3 +116,8 @@ sequelize
   .catch((err) => {
     console.log("sequelizeError:", err);
   });
+*/
+
+mongoConnect(() => {
+  app.listen(3000);
+});

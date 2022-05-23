@@ -1,4 +1,4 @@
-// sample admin controller using file mysql database
+// sample admin controller using mysql database
 const Product = require("../models/product");
 
 // handle add product form page
