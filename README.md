@@ -54,3 +54,7 @@
 - setup MySQL database
 - connecting the app to the MySQL database
 - do simple query (insert and getting data)
+- learn sequelize
+- associations in sequelize
+- use special method (create, get and set)
+- use then to handle async code
