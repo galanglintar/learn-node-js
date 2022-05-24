@@ -58,3 +58,18 @@
 - associations in sequelize
 - use special method (create, get and set)
 - use then to handle async code
+
+20 May 2022
+
+- setup MongoDB database
+- use NoSQL syntax
+- learn mongoose
+- create model using mongoose
+- manipulate data using mongoose
+
+23 May 2022
+
+- setup REST API project
+- learn jwt (authorization) on node,js
+- implement api on fontend app
+- upload image
