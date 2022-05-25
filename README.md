@@ -43,3 +43,8 @@
 18 May 2022
 
 - enhance shop app
+- adding parameter to the route
+- find data in array by using id
+- passing data using POST
+- get query parameters
+- manipulate json data (find, add, edit and delete)
