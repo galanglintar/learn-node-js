@@ -7,11 +7,10 @@ const multer = require("multer");
 
 const feedRoutes = require("./routes/feed");
 const authRoutes = require("./routes/auth");
-const res = require("express/lib/response");
 
 const app = express();
 
-// for windows
+// for windows install uuid library
 /*
 const { v4: uuidv4 } = require('uuid');
  
@@ -80,6 +79,10 @@ mongoose
     { dbName: "social-network-api" }
   )
   .then((result) => {
-    app.listen(8080);
+    const server = app.listen(8080);
+    const io = require("./socket").init(server);
+    io.on("connection", (socket) => {
+      console.log("Client connected");
+    });
   })
   .catch((err) => console.log(err));
