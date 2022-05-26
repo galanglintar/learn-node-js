@@ -18,6 +18,10 @@ const userSchema = new Schema({
     type: String,
     default: "I am new!",
   },
+  hasuraUserId: {
+    type: String,
+    default: "",
+  },
   posts: [
     {
       type: Schema.Types.ObjectId,
